@@ -35,6 +35,7 @@ module.exports = {
 		'no-console': 'warn',
 		'unused-imports/no-unused-imports': 'error',
 		'prefer-const': ['error', { destructuring: 'all' }],
+		'react/prop-types': 'off'
 	},
 	settings: {
 		react: {
