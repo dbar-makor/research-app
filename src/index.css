@@ -1,76 +1,37 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.css-ke5b6m-MuiButtonBase-root-MuiButton-root {
-  border-radius: 30px !important;
-  width: 300px !important;
-  height: 300px !important;
+.react-tel-input .form-control {
+	background-color: #f8f9fb !important;
 }
 
-.css-ke5b6m-MuiButtonBase-root-MuiButton-root:not(:last-child) {
-  margin-right: 30px;
+.react-tel-input .form-control:hover {
+	border: 1px solid #000;
 }
 
-.css-kjirbw-MuiButtonBase-root-MuiButton-root {
-  border-radius: 30px !important;
+.react-tel-input .country-list .country-name {
+	font-size: 1.2rem;
+}
+.react-tel-input .country-list .country .dial-code {
+	font-size: 1.2rem;
 }
 
-.css-1sim9df-MuiButtonBase-root-MuiButton-root {
-  border-radius: 30px !important;
+@media (max-width: 620px) {
+	.react-tel-input .form-control {
+		width: 20rem !important;
+	}
 }
 
-.css-1sszw6i-MuiButtonBase-root-MuiButton-root {
-  border-radius: 30px !important;
-  width: 300px !important;
-  height: 300px !important;
-}
-
-.css-1sszw6i-MuiButtonBase-root-MuiButton-root {
-  margin-right: 30px !important;
-}
-
-.css-sghohy-MuiButtonBase-root-MuiButton-root {
-  border-radius: 20px !important;
-  margin-top: 50px !important;
-  font-size: 2.3rem !important;
-  font-weight: 600 !important;
-}
-
-.css-1ex1afd-MuiTableCell-root {
-  padding: 5px !important;
-}
-
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
-  border-color: #3e2f71 !important;
-}
-
-.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-  color: #3e2f71 !important;
-}
-
-.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
-  border-color: #3e2f71 !important;
-}
-
-.css-m1gykc.Mui-selected {
-  color: #fff;
-  background-color: #3e2f71 !important;
-}
-
-.css-1yy0aak-MuiTypography-root.Mui-selected {
-  color: #fff;
-  background-color: #3e2f71 !important;
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+	background-color: #f8f9fb !important;
+	outline-color: #f8f9fb !important;
 }
