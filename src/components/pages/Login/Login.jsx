@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import LoginView from './Login.view';
 
 const Login = (props) => {
-	const [emailState, setEmailState] = useState('');
-	const [passwordState, setPasswordState] = useState('');
-	const [errorState, setErrorState] = useState(false);
-	const [showPasswordState, setShowPasswordState] = useState(false);
+	const emailRegex =
+		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-	// const history = useHistory();
+	const [emailState, setEmailState] = useState('');
+	const [emailErrorState, setEmailErrorState] = useState('');
+	const [passwordState, setPasswordState] = useState('');
+	const [passwordErrorState, setPasswordErrorState] = useState('');
+	const [showPasswordState, setShowPasswordState] = useState(false);
 
 	const showPasswordChangeHandler = () => setShowPasswordState(!showPasswordState);
 	const emailChangeHandler = (email) => setEmailState(email.target.value);
@@ -17,33 +19,46 @@ const Login = (props) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		backendAPIAxios
-			.post('/auth/login', {
-				email: emailState,
-				password: passwordState,
-			})
-			.then((response) => {
-				sessionStorage.setItem('token', response.data.data.token);
-				backendAPIAxios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.data.token;
-				// history.push('/');
-			})
-			.catch((e) => {
-				setErrorState(() => true);
-				alert(`Failed to auth with error: ${e}`);
-			});
+		if (!emailState.match(emailRegex)) {
+			setEmailErrorState('Please provide a valid email');
+		} else {
+			setEmailErrorState('');
+		}
+
+		if (passwordState.length < 8) {
+			setPasswordErrorState('Password must be 8 characters');
+		} else {
+			setPasswordErrorState('');
+		}
+
+		// backendAPIAxios
+		// 	.post('/auth/login', {
+		// 		email: emailState,
+		// 		password: passwordState,
+		// 	})
+		// 	.then((response) => {
+		// 		sessionStorage.setItem('token', response.data.data.token);
+		// 		backendAPIAxios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.data.token;
+		// 		// history.push('/');
+		// 	})
+		// 	.catch((e) => {
+		// 		setErrorState(() => true);
+		// 		alert(`Failed to auth with error: ${e}`);
+		// 	});
 	};
 	return (
 		<LoginView
-			username={emailState}
+			email={emailState}
+			emailError={emailErrorState}
 			password={passwordState}
+			passwordError={passwordErrorState}
 			showPassword={showPasswordState}
-			usernameChangeHandler={emailChangeHandler}
+			emailChangeHandler={emailChangeHandler}
 			passwordChangeHandler={passwordChangeHandler}
 			showPasswordChangeHandler={showPasswordChangeHandler}
 			submitHandler={submitHandler}
-			error={errorState}
 		>
-			{props}
+			{props.children}
 		</LoginView>
 	);
 };

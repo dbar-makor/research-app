@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@material-ui/core';
 import TextField from '@mui/material/TextField';
@@ -22,12 +23,14 @@ const LoginView = (props) => {
 					<div style={{ position: 'relative', display: 'inline-block' }}>
 						<MailOutlineIcon style={{ position: 'absolute', right: 15.5, top: 15, width: 30, height: 30 }} />
 						<TextField
-							label="Email"
-							variant="outlined"
 							className={classes['form__input']}
 							value={props.email}
 							onChange={props.emailChangeHandler}
+							label="Email"
 							type="email"
+							variant="outlined"
+							error={!!props.emailError}
+							helperText={props.emailError}
 						></TextField>
 					</div>
 					<div style={{ position: 'relative', display: 'inline-block' }}>
@@ -65,17 +68,23 @@ const LoginView = (props) => {
 							value={props.password}
 							onChange={props.passwordChangeHandler}
 							type={props.showPassword ? 'text' : 'password'}
+							error={!!props.passwordError}
+							helperText={props.passwordError}
 						></TextField>
 					</div>
 					<div className={classes['form__section']}>
-						<FormControlLabel control={<Checkbox />} label="Remeber Me" />
-						<a>Forgot your password?</a>
+						<FormControlLabel control={<Checkbox />} label="Remember Me" />
+						<Link to="/" style={{ textDecoration: 'none' }}>
+							Forgot your password?
+						</Link>
 					</div>
 					<Button className={classes['form__button']} type="button" variant="contained" onClick={props.submitHandler}>
 						Log In
 					</Button>
 					<h3>Not a mamber of Makor Group Research</h3>
-					<a className={classes['form__request']}>Request an access</a>
+					<Link to="/requestaccess" className={classes['form__request']}>
+						Request an access
+					</Link>
 					{props.error === true && <span className={classes['form__error']}>Wrong email or pasword</span>}
 				</form>
 			</div>
